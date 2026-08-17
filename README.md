@@ -17,10 +17,8 @@ service.
 ## Requirements
 
 - GNOME Shell 46–50
-- `glib-compile-schemas`
-
-Toodoo does not require Python, Codex, Bubblewrap, D-Bus services, or an
-internet connection.
+- Bash
+- GLib's `glib-compile-schemas` command
 
 ## Install
 
@@ -31,9 +29,7 @@ cd toodoo
 ```
 
 Log out and back in so GNOME Shell discovers the extension, then enable
-**Toodoo** in the Extensions app. The installer removes program files from the
-old Desktop Agent prototype if they are present, while leaving its historical
-configuration and audit data untouched.
+**Toodoo** in the Extensions app.
 
 ## Use
 
@@ -56,6 +52,9 @@ reinstall can restore them.
 
 ## Development
 
+Development additionally requires Node.js 20 or newer, GNU Make, and the
+`gnome-extensions` command supplied with GNOME Shell.
+
 Run all static checks and unit tests:
 
 ```bash
@@ -67,6 +66,9 @@ Create an installable GNOME Shell extension archive:
 ```bash
 make bundle
 ```
+
+The bundle is written to
+`dist/toodoo@mendrik.github.io.shell-extension.zip`.
 
 ## License
 

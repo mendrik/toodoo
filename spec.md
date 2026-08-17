@@ -2,8 +2,8 @@
 
 ## Purpose
 
-Toodoo is a tray-only todo tracker for GNOME Shell. It has no standalone
-window, daemon, network integration, or AI features.
+Toodoo is a tray-only todo tracker for GNOME Shell. Its panel menu is the
+complete application interface.
 
 ## Panel menu
 
