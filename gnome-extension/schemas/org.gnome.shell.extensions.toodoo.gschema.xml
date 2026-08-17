@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.toodoo" path="/org/gnome/shell/extensions/toodoo/">
+    <key name="tasks-v2" type="a(sss)">
+      <default>[]</default>
+      <summary>Todo tasks</summary>
+      <description>Ordered task identifiers, titles, and states.</description>
+    </key>
+    <key name="tasks" type="a(ssb)">
+      <default>[]</default>
+      <summary>Legacy todo tasks</summary>
+      <description>Previous task storage retained for one-time migration.</description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,9 @@
+{
+  "uuid": "toodoo@mendrik.github.io",
+  "name": "Toodoo",
+  "description": "Keep a simple todo list in the GNOME panel.",
+  "shell-version": ["46", "47", "48", "49", "50"],
+  "settings-schema": "org.gnome.shell.extensions.toodoo",
+  "url": "https://github.com/mendrik/toodoo",
+  "version": 1
+}

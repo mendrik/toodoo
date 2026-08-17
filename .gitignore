@@ -1,0 +1,11 @@
+# Generated extension output
+dist/
+gnome-extension/schemas/gschemas.compiled
+
+# Local tooling and editors
+.rust-repo-intelligence/
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
