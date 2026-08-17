@@ -1,0 +1,15 @@
+.toodoo-task-entry {
+  width: 24em;
+}
+
+.toodoo-dialog-hint {
+  opacity: 0.65;
+}
+
+.toodoo-task-open {
+  color: #e01b24;
+}
+
+.toodoo-task-completed {
+  color: #2ec27e;
+}
