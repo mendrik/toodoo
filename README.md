@@ -10,8 +10,11 @@ service.
 
 - A standard list icon in the GNOME panel.
 - A compact `New task…` dialog controlled with Enter and Escape.
-- Unfinished tasks shown before completed tasks.
-- Per-task actions to mark done, mark undone, or delete.
+- Three explicit states: undone, done, and rejected.
+- A bullet for undone tasks, a green check for done, and a red cross for rejected.
+- Per-task actions to change state, edit, or delete.
+- Global actions to delete completed tasks, delete rejected tasks, or clear the
+  whole list.
 - Persistent task storage through GSettings.
 
 ## Requirements
@@ -35,9 +38,10 @@ Log out and back in so GNOME Shell discovers the extension, then enable
 
 Select the list icon in the panel, then choose `New task…`. Type a task and
 press Enter to add it, or Escape to cancel. Open a task's submenu to change its
-completion state or delete it.
+title or select `Rejected`, `Undone`, or `Done`. Open the `Tasks` submenu to
+delete all done tasks, delete all rejected tasks, or clear the whole list.
 
-Completed tasks stay in the list until deleted. Tasks survive extension
+Tasks in every state stay in the list until deleted. Tasks survive extension
 reloads, logout, and reinstall because they are stored in the user's GSettings
 database.
 

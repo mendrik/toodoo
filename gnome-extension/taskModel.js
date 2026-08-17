@@ -1,7 +1,19 @@
 const TASK_LABEL_LIMIT = 48;
 
+export const TaskState = Object.freeze({
+    REJECTED: 'rejected',
+    UNDONE: 'undone',
+    DONE: 'done',
+});
+
 export function normalizeTaskTitle(value) {
     return String(value ?? '').trim();
+}
+
+export function normalizeTaskState(value) {
+    return Object.values(TaskState).includes(value)
+        ? value
+        : TaskState.UNDONE;
 }
 
 export function createTask(id, title) {
@@ -9,12 +21,23 @@ export function createTask(id, title) {
     if (!normalizedTitle)
         return null;
 
-    return {id, title: normalizedTitle, completed: false};
+    return {id, title: normalizedTitle, state: TaskState.UNDONE};
 }
 
-export function toggleTaskCompletion(tasks, id) {
+export function setTaskState(tasks, id, state) {
+    const normalizedState = normalizeTaskState(state);
     return tasks.map(task => task.id === id
-        ? {...task, completed: !task.completed}
+        ? {...task, state: normalizedState}
+        : task);
+}
+
+export function updateTaskTitle(tasks, id, title) {
+    const normalizedTitle = normalizeTaskTitle(title);
+    if (!normalizedTitle)
+        return null;
+
+    return tasks.map(task => task.id === id
+        ? {...task, title: normalizedTitle}
         : task);
 }
 
@@ -22,10 +45,23 @@ export function deleteTask(tasks, id) {
     return tasks.filter(task => task.id !== id);
 }
 
+export function deleteTasksInState(tasks, state) {
+    return tasks.filter(task => task.state !== state);
+}
+
+export function migrateLegacyTaskRecords(records) {
+    return records.map(([id, title, completed]) => ({
+        id,
+        title,
+        state: completed ? TaskState.DONE : TaskState.UNDONE,
+    }));
+}
+
 export function orderTasks(tasks) {
     return [
-        ...tasks.filter(task => !task.completed),
-        ...tasks.filter(task => task.completed),
+        ...tasks.filter(task => task.state === TaskState.UNDONE),
+        ...tasks.filter(task => task.state === TaskState.DONE),
+        ...tasks.filter(task => task.state === TaskState.REJECTED),
     ];
 }
 

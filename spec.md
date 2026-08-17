@@ -9,10 +9,13 @@ complete application interface.
 
 The panel uses the standard `view-list-symbolic` icon. Selecting it opens a
 menu whose first item is always `New task…`. Every saved task follows as a
-submenu item; the empty menu contains no placeholder row.
+submenu item; the empty menu contains no placeholder row. A global `Tasks`
+submenu provides `Delete completed`, `Delete rejected`, and `Delete all`
+commands. Each command is disabled when it has no tasks to remove.
 
-Unfinished tasks appear first, followed by completed tasks. Creation order is
-preserved within both groups.
+Undone tasks appear first, followed by done tasks and then rejected tasks.
+Creation order is preserved within each state group. `Delete completed`
+removes done tasks only, while `Delete rejected` removes rejected tasks only.
 
 ## Adding a task
 
@@ -23,18 +26,26 @@ dialog open. Escape closes it without changes.
 
 ## Task actions
 
-Each task submenu presents exactly two actions:
+Each task submenu presents three mutually exclusive state choices. The current
+state has a radio-style dot:
 
-- `Mark done` for an unfinished task, or `Mark undone` for a completed task.
+- `Rejected`
+- `Undone`
+- `Done`
+
+The state choices are followed by these actions:
+
+- `Edit…`, which opens the task dialog with the current title. Enter saves a
+  trimmed, non-empty title and Escape leaves the task unchanged.
 - `Delete`, which removes the task immediately.
 
-An unfinished task has a red cross icon. A completed task has a green check
-icon. The icon shape and accessible name also communicate state, so color is
-not the only signal.
+An undone task has a single bullet icon, a done task has a green check, and a
+rejected task has a red cross. The icon shape and accessible name also
+communicate state, so color is not the only signal.
 
 ## Persistence
 
 Tasks are stored in the extension's GSettings schema as ordered `(id, title,
-completed)` records. IDs are UUIDs so duplicate task titles are allowed and
-actions always affect the selected task. Completed tasks remain stored until
-deleted.
+state)` records. IDs are UUIDs so duplicate task titles are allowed and actions
+always affect the selected task. Existing boolean records are migrated once:
+unfinished becomes undone and completed becomes done.

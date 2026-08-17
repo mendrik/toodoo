@@ -1,15 +1,40 @@
+.toodoo-task-dialog {
+  padding: 16px 24px;
+}
+
+.toodoo-task-dialog .modal-dialog-content-box {
+  padding-top: 0;
+}
+
+.toodoo-task-dialog .message-dialog-content {
+  spacing: 12px;
+}
+
 .toodoo-task-entry {
   width: 24em;
 }
 
+.toodoo-task-fields {
+  spacing: 4px;
+}
+
 .toodoo-dialog-hint {
+  font-size: 0.8em;
   opacity: 0.65;
 }
 
-.toodoo-task-open {
+.toodoo-task-state-icon {
+  width: 1.091em;
+}
+
+.toodoo-task-undone-symbol {
+  font-size: 0.8em;
+}
+
+.toodoo-task-rejected {
   color: #e01b24;
 }
 
-.toodoo-task-completed {
+.toodoo-task-done {
   color: #2ec27e;
 }
